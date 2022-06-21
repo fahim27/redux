@@ -2,6 +2,7 @@
 import { createStore } from "redux";
 
 const INCREMENT = "INCREMENT";
+const INCREMENT_BY_VALUE = "INCREMENT_BY_VALUE";
 const DECREMENT = "DECREMENT";
 const RESET = "RESET";
 
@@ -22,6 +23,12 @@ const decrementAction = () => {
 const resetAction = () => {
     return {
         type: RESET
+    }
+}
+const incrementByValueAction = (value) => {
+    return {
+        type: INCREMENT_BY_VALUE,
+        payload:value
     }
 }
 
@@ -47,6 +54,11 @@ const counterReduce = (state=initialState, action) => {
                 ...state,
                 count: 0
             }
+        case INCREMENT_BY_VALUE:
+            return {
+                ...state,
+                count: state.count+action.payload
+            }
 
         default:
             state
@@ -61,9 +73,8 @@ store.subscribe(() => {
 console.log(store.getState());
 })
 
-store.dispatch(incrementAction())
-store.dispatch(incrementAction())
-store.dispatch(incrementAction())
-store.dispatch(resetAction())
+store.dispatch(incrementByValueAction(5))
+store.dispatch(incrementByValueAction(5))
+
 
 
