@@ -1,5 +1,6 @@
 
-import { combineReducers, createStore } from "redux";
+import { applyMiddleware, combineReducers, createStore } from "redux";
+import logger from "redux-logger";
 
 ////product const
 const GET_PRODUCTS = "GET_PRODUCTS";
@@ -95,21 +96,16 @@ const cartReducer = (state = initialCartState, action) => {
 
 
 const rootReducer = combineReducers({
-    productR: productReducer,
-    cartR: cartReducer
+    productAddR: productReducer,
+    cartItemR: cartReducer
 });
-const store = createStore(rootReducer);
+const store = createStore(rootReducer,applyMiddleware(logger.default));
 
 store.subscribe(() => {
-    console.log('====================================');
     console.log(store.getState());
-    console.log('====================================');
 })
 
-store.dispatch(getCartItems())
-store.dispatch(getProducts())
+store.dispatch(addCartItems('ghghygb'))
+//;store.dispatch(getProducts())
+//store.dispatch(addCartItems())
 
-store.dispatch(addCartItems('ajd'))
-// store.dispatch(addProducts('banana'))
-// store.dispatch(addProducts('pen'))
-// store.dispatch(addProducts('mobile'))
