@@ -1,0 +1,7 @@
+export const INCREMENT = "INCREMENT";
+export const DECREMENT = "DECREMENT";
+export const RESET = "RESET";
+
+export const GET_TODOS_REQUEST = "GET_TODOS_REQUEST";
+export const TODOS_REQUEST_SUCCESS = "TODOS_REQUEST_SUCCESS";
+export const TODOS_REQUEST_FAILD = "TODOS_REQUEST_FAILD";
